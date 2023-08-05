@@ -1,19 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Card, Skeleton, Input, Button, Link } from "@nextui-org/react";
-import { EyeFilledIcon } from "@/components/EyeFilledIcon";
-import { EyeSlashFilledIcon } from "@/components/EyeSlashFilledIcon";
+import { EyeFilledIcon } from "@/components/svgs/EyeFilledIcon";
+import { EyeSlashFilledIcon } from "@/components/svgs/EyeSlashFilledIcon";
+import { useRouter } from "next/navigation";
 
 const UserAuthForm = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
+  const router = useRouter();
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
     console.log(name, password);
+    router.push("/home");
   };
 
   return (
