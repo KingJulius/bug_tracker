@@ -1,19 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Card, Skeleton, Input, Button, Link } from "@nextui-org/react";
 import { EyeFilledIcon } from "@/components/EyeFilledIcon";
 import { EyeSlashFilledIcon } from "@/components/EyeSlashFilledIcon";
 
-const UserAuthForm = () => {
-  const [name, setName] = useState("");
+const UserRegisterForm = () => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [cpassword, setCPassword] = useState("");
   const [isVisible, setIsVisible] = useState(false);
-  const toggleVisibility = () => setIsVisible(!isVisible);
-
+  const [isCpVisible, setIsCpVisible] = useState(false);
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    console.log(name, password);
+    alert(`Thanks for registering!`);
   };
 
   return (
@@ -31,8 +31,8 @@ const UserAuthForm = () => {
             label="Email"
             placeholder="Email"
             variant="bordered"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             isRequired
           />
           <Input
@@ -45,7 +45,7 @@ const UserAuthForm = () => {
               <button
                 className="focus:outline-none"
                 type="button"
-                onClick={toggleVisibility}
+                onClick={() => setIsVisible(!isVisible)}
               >
                 {isVisible ? (
                   <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
@@ -56,10 +56,31 @@ const UserAuthForm = () => {
             }
             type={isVisible ? "text" : "password"}
           />
-          <Link href="/register" className="pt-3 flex justify-center">Not a user? Register here</Link>
+          <Input
+            label="Confirm Password"
+            variant="bordered"
+            placeholder="Re-enter your password"
+            value={cpassword}
+            onChange={(e) => setCPassword(e.target.value)}
+            endContent={
+              <button
+                className="focus:outline-none"
+                type="button"
+                onClick={() => setIsCpVisible(!isCpVisible)}
+              >
+                {isCpVisible ? (
+                  <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                ) : (
+                  <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                )}
+              </button>
+            }
+            type={isCpVisible ? "text" : "password"}
+          />
+          <Link href="/" className="pt-3 flex justify-center">Back to Login</Link>
           <div className="flex justify-center pt-3">
             <Button color="primary" variant="solid" type="submit">
-              Login
+              Register
             </Button>
           </div>
         </div>
@@ -68,4 +89,4 @@ const UserAuthForm = () => {
   );
 };
 
-export default UserAuthForm;
+export default UserRegisterForm;
