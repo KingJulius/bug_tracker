@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { Card, Skeleton, Input, Button, Link } from "@nextui-org/react";
-import { EyeFilledIcon } from "@/components/EyeFilledIcon";
-import { EyeSlashFilledIcon } from "@/components/EyeSlashFilledIcon";
+import { EyeFilledIcon } from "@/components/svgs/EyeFilledIcon";
+import { EyeSlashFilledIcon } from "@/components/svgs/EyeSlashFilledIcon";
 
 const UserRegisterForm = () => {
   const [email, setEmail] = useState("");
